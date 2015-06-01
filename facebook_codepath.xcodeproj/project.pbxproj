@@ -13,6 +13,7 @@
 		BBC7E7491B1BE036006BA7C5 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = BBC7E7481B1BE036006BA7C5 /* Images.xcassets */; };
 		BBC7E74C1B1BE036006BA7C5 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = BBC7E74A1B1BE036006BA7C5 /* LaunchScreen.xib */; };
 		BBC7E7581B1BE036006BA7C5 /* facebook_codepathTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBC7E7571B1BE036006BA7C5 /* facebook_codepathTests.swift */; };
+		BBC7E7621B1BE225006BA7C5 /* FeedViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBC7E7611B1BE225006BA7C5 /* FeedViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -36,6 +37,7 @@
 		BBC7E7511B1BE036006BA7C5 /* facebook_codepathTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = facebook_codepathTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		BBC7E7561B1BE036006BA7C5 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		BBC7E7571B1BE036006BA7C5 /* facebook_codepathTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = facebook_codepathTests.swift; sourceTree = "<group>"; };
+		BBC7E7611B1BE225006BA7C5 /* FeedViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FeedViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -80,6 +82,7 @@
 				BBC7E7411B1BE036006BA7C5 /* AppDelegate.swift */,
 				BBC7E7431B1BE036006BA7C5 /* ViewController.swift */,
 				BBC7E7451B1BE036006BA7C5 /* Main.storyboard */,
+				BBC7E7611B1BE225006BA7C5 /* FeedViewController.swift */,
 				BBC7E7481B1BE036006BA7C5 /* Images.xcassets */,
 				BBC7E74A1B1BE036006BA7C5 /* LaunchScreen.xib */,
 				BBC7E73F1B1BE036006BA7C5 /* Supporting Files */,
@@ -214,6 +217,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				BBC7E7441B1BE036006BA7C5 /* ViewController.swift in Sources */,
+				BBC7E7621B1BE225006BA7C5 /* FeedViewController.swift in Sources */,
 				BBC7E7421B1BE036006BA7C5 /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
