@@ -8,8 +8,7 @@
 
 import UIKit
 
-class FeedViewController: UIViewController {
-
+class FeedViewController: UIViewController, UIViewControllerTransitioningDelegate, UIViewControllerAnimatedTransitioning {
 
     @IBOutlet weak var feedScrollView: UIScrollView!
     @IBOutlet weak var feedImageView: UIImageView!
@@ -20,6 +19,10 @@ class FeedViewController: UIViewController {
     @IBOutlet weak var wedding5: UIImageView!
     
     var selectedImageView: UIImageView!
+    var isPresenting: Bool = true
+    var interactiveTransition: UIPercentDrivenInteractiveTransition!
+    var window = UIApplication.sharedApplication().keyWindow
+    var imageTransition: ImageTransition!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -60,11 +63,61 @@ class FeedViewController: UIViewController {
         performSegueWithIdentifier("photoViewSegue", sender: nil)
     }
 
+    func animationControllerForPresentedController(presented: UIViewController, presentingController presenting: UIViewController, sourceController source: UIViewController) -> UIViewControllerAnimatedTransitioning? {
+        isPresenting = true
+        return self
+    }
+    
+    func animationControllerForDismissedController(dismissed: UIViewController) -> UIViewControllerAnimatedTransitioning? {
+        isPresenting = false
+        return self
+    }       
+
+    func transitionDuration(transitionContext: UIViewControllerContextTransitioning) -> NSTimeInterval {
+        // The value here should be the duration of the animations scheduled in the animationTransition method
+        return 0.35
+    }
+    
+    func animateTransition(transitionContext: UIViewControllerContextTransitioning) {
+        
+        var containerView = transitionContext.containerView()
+        var toViewController = transitionContext.viewControllerForKey(UITransitionContextToViewControllerKey)!
+        var fromViewController = transitionContext.viewControllerForKey(UITransitionContextFromViewControllerKey)!
+        
+        if (isPresenting) {
+            containerView.addSubview(toViewController.view)
+            toViewController.view.alpha = 0
+            UIView.animateWithDuration(0.4, animations: { () -> Void in
+                toViewController.view.alpha = 1
+                }) { (finished: Bool) -> Void in
+                    transitionContext.completeTransition(true)
+            }
+        } else {
+            UIView.animateWithDuration(0.4, animations: { () -> Void in
+                fromViewController.view.alpha = 0
+                }) { (finished: Bool) -> Void in
+                    transitionContext.completeTransition(true)
+                    fromViewController.view.removeFromSuperview()
+            }
+        }
+    }
+    
+//    func interactionControllerForDismissal(animator: UIViewControllerAnimatedTransitioning) -> UIViewControllerInteractiveTransitioning? {
+//        
+//        interactiveTransition = UIPercentDrivenInteractiveTransition()
+//        // Setting the completion speed gets rid of a weird bounce effect bug when transitions complete
+//        interactiveTransition.completionSpeed = 0.99
+//        return interactiveTransition
+//    }
+
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject!) {
         var destinationViewController = segue.destinationViewController as! PhotoViewController
         
         destinationViewController.image = self.selectedImageView.image
+        imageTransition = ImageTransition()
         
+        destinationViewController.modalPresentationStyle = UIModalPresentationStyle.Custom
+        destinationViewController.transitioningDelegate = imageTransition
     }
 
 }
