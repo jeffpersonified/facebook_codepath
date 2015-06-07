@@ -19,6 +19,8 @@ class FeedViewController: UIViewController {
     @IBOutlet weak var wedding4: UIImageView!
     @IBOutlet weak var wedding5: UIImageView!
     
+    var selectedImageView: UIImageView!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -31,31 +33,38 @@ class FeedViewController: UIViewController {
     }
     
     @IBAction func didTapWedding1(sender: UITapGestureRecognizer) {
-        println("1")
+        selectedImageView = sender.view as! UIImageView
+        segueToPhotoView()
     }
 
     @IBAction func didTapWedding2(sender: UITapGestureRecognizer) {
-        println("2")
+        selectedImageView = sender.view as! UIImageView
+        segueToPhotoView()
     }
     @IBAction func didTapWedding3(sender: UITapGestureRecognizer) {
-        println("3")
+        selectedImageView = sender.view as! UIImageView
+        segueToPhotoView()
     }
 
     @IBAction func didTapWedding4(sender: AnyObject) {
-        println("4")
+        selectedImageView = sender.view as! UIImageView
+        segueToPhotoView()
     }
 
     @IBAction func didTapWedding5(sender: AnyObject) {
-        println("5")
+        selectedImageView = sender.view as! UIImageView
+        segueToPhotoView() 
     }
-    /*
-    // MARK: - Navigation
+    
+    func segueToPhotoView() {
+        performSegueWithIdentifier("photoViewSegue", sender: nil)
+    }
 
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
+    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject!) {
+        var destinationViewController = segue.destinationViewController as! PhotoViewController
+        
+        destinationViewController.image = self.selectedImageView.image
+        
     }
-    */
 
 }
