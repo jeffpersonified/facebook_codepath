@@ -13,6 +13,11 @@ class FeedViewController: UIViewController {
 
     @IBOutlet weak var feedScrollView: UIScrollView!
     @IBOutlet weak var feedImageView: UIImageView!
+    @IBOutlet weak var wedding1: UIImageView!
+    @IBOutlet weak var wedding2: UIImageView!
+    @IBOutlet weak var wedding3: UIImageView!
+    @IBOutlet weak var wedding4: UIImageView!
+    @IBOutlet weak var wedding5: UIImageView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -25,7 +30,24 @@ class FeedViewController: UIViewController {
         super.didReceiveMemoryWarning()
     }
     
+    @IBAction func didTapWedding1(sender: UITapGestureRecognizer) {
+        println("1")
+    }
 
+    @IBAction func didTapWedding2(sender: UITapGestureRecognizer) {
+        println("2")
+    }
+    @IBAction func didTapWedding3(sender: UITapGestureRecognizer) {
+        println("3")
+    }
+
+    @IBAction func didTapWedding4(sender: AnyObject) {
+        println("4")
+    }
+
+    @IBAction func didTapWedding5(sender: AnyObject) {
+        println("5")
+    }
     /*
     // MARK: - Navigation
 
