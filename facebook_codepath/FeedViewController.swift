@@ -21,7 +21,6 @@ class FeedViewController: UIViewController, UIViewControllerTransitioningDelegat
     var selectedImageView: UIImageView!
     var isPresenting: Bool = true
     var interactiveTransition: UIPercentDrivenInteractiveTransition!
-    var window = UIApplication.sharedApplication().keyWindow
     var imageTransition: ImageTransition!
     
     override func viewDidLoad() {
@@ -87,13 +86,13 @@ class FeedViewController: UIViewController, UIViewControllerTransitioningDelegat
         if (isPresenting) {
             containerView.addSubview(toViewController.view)
             toViewController.view.alpha = 0
-            UIView.animateWithDuration(0.4, animations: { () -> Void in
+            UIView.animateWithDuration(0.25, animations: { () -> Void in
                 toViewController.view.alpha = 1
                 }) { (finished: Bool) -> Void in
                     transitionContext.completeTransition(true)
             }
         } else {
-            UIView.animateWithDuration(0.4, animations: { () -> Void in
+            UIView.animateWithDuration(0.25, animations: { () -> Void in
                 fromViewController.view.alpha = 0
                 }) { (finished: Bool) -> Void in
                     transitionContext.completeTransition(true)
@@ -114,6 +113,7 @@ class FeedViewController: UIViewController, UIViewControllerTransitioningDelegat
         var destinationViewController = segue.destinationViewController as! PhotoViewController
         
         destinationViewController.image = self.selectedImageView.image
+        selectedImageView.alpha = 0
         imageTransition = ImageTransition()
         
         destinationViewController.modalPresentationStyle = UIModalPresentationStyle.Custom

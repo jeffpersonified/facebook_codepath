@@ -9,21 +9,33 @@
 import UIKit
 
 class ImageTransition: BaseTransition {
+
+    var window = UIApplication.sharedApplication().keyWindow
+
+    
     override func presentTransition(containerView: UIView, fromViewController: UIViewController, toViewController: UIViewController) {
-        
+        var duplicateImage: UIImageView!
         var feedViewController = fromViewController as! FeedViewController
         var photoViewController = toViewController as! PhotoViewController
         var destinationImageFrame = photoViewController.imageView.frame
+        var adjustedFrame = window!.convertRect(feedViewController.selectedImageView.frame, fromView: feedViewController.feedScrollView)
         
+        duplicateImage = feedViewController.selectedImageView
+        duplicateImage.frame = adjustedFrame
+        duplicateImage.contentMode = UIViewContentMode.ScaleAspectFit
+        duplicateImage.clipsToBounds = true
+        window!.addSubview(duplicateImage)
+        
+        photoViewController.imageView.alpha = 0
         toViewController.view.alpha = 0
-        photoViewController.imageView.frame = feedViewController.selectedImageView.frame
-        
-        UIView.animateWithDuration(duration, animations: {
 
+        UIView.animateWithDuration(duration, animations: {
             toViewController.view.alpha = 1
-            photoViewController.imageView.frame = destinationImageFrame
-            
+            duplicateImage.frame = destinationImageFrame
+            duplicateImage.alpha = 1
         }) { (finished: Bool) -> Void in
+            duplicateImage.alpha = 0
+            photoViewController.imageView.alpha = 1
             self.finish()
         }
     }
