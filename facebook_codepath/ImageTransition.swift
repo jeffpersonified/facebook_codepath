@@ -41,12 +41,26 @@ class ImageTransition: BaseTransition {
     }
     
     override func dismissTransition(containerView: UIView, fromViewController: UIViewController, toViewController: UIViewController) {
+        var duplicateImage: UIImageView!
+        var photoViewController = fromViewController as! PhotoViewController
+        var feedViewController = toViewController as! FeedViewController
+        var destinationImageFrame = feedViewController.selectedImageView.frame
+        var adjustedFrame = window!.convertRect(photoViewController.imageView.frame, fromView: photoViewController.scrollView)
+        
+        duplicateImage = photoViewController.imageView
+        duplicateImage.frame = adjustedFrame
+        duplicateImage.clipsToBounds = true
+        window!.addSubview(duplicateImage)
         
         fromViewController.view.alpha = 1
+        
         UIView.animateWithDuration(duration, animations: {
             fromViewController.view.alpha = 0
-            }) { (finished: Bool) -> Void in
-                self.finish()
+            duplicateImage.frame = destinationImageFrame
+            duplicateImage.alpha = 0
+        }) { (finished: Bool) -> Void in
+            duplicateImage.alpha = 0
+            self.finish()
         }
     }
 }

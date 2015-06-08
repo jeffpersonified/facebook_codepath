@@ -113,7 +113,7 @@
                     </connections>
                 </tapGestureRecognizer>
             </objects>
-            <point key="canvasLocation" x="1122" y="366"/>
+            <point key="canvasLocation" x="1654" y="366"/>
         </scene>
         <!--Photo View Controller-->
         <scene sceneID="87u-cG-bxP">
@@ -157,22 +157,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="6sz-6U-7LX" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1508" y="366"/>
-        </scene>
-        <!--Navigation Controller-->
-        <scene sceneID="G19-da-hFk">
-            <objects>
-                <navigationController automaticallyAdjustsScrollViewInsets="NO" navigationBarHidden="YES" id="ehk-yc-WbB" sceneMemberID="viewController">
-                    <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="UxI-NT-Bks">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
-                        <autoresizingMask key="autoresizingMask"/>
-                    </navigationBar>
-                    <nil name="viewControllers"/>
-                </navigationController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="kQB-aP-CGx" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="276" y="366"/>
+            <point key="canvasLocation" x="2040" y="366"/>
         </scene>
     </scenes>
     <resources>
